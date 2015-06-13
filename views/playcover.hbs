@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> header}}
+<body>
+{{> nav}}
+<div class="container" style="padding-top: 50px;">
+    <div class="row">
+        <div class="col l12">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">{{title}} <a class="orange-text" href="/{{desc.shortName}}/full"><i class="fa fa-book right"></i></a></span>
+                    <p>{{desc.desc}}</p>
+                </div>
+                <div class="card-action">
+                    {{#each desc.tags}}
+                        <a href="/tag/{{this}}" class="btn white-text" style="margin: 5px;"><i class="fa fa-tag"></i> {{this}}</a>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        {{#each toc}}
+            <div class="col l6 m12">
+                <div class="card blue-grey darken-1" style="height: 270px;">
+                    <div class="card-content white-text" style="overflow: auto; min-height: 207px;">
+                        <span class="card-title">{{#if standard}}ACT{{/if}} {{name}}  <a href="/{{../desc.shortName}}/{{name}}" class="orange-text"><i class="fa fa-book right"></i></a></span>
+                        <p>{{info}}</p>
+                    </div>
+                    <div class="card-action">
+                        {{#each scene}}
+                            <a href="/{{../../desc.shortName}}/{{../name}}/{{arabic}}">Scene {{arabic}}</a>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
+
+{{> scripts}}
+
+</body>
+</html>

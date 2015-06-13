@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> header}}
+<body>
+{{> nav}}
+<div class="container">
+    {{#if scene}}
+        <div class="card light-blue darken-2">
+            <div class="card-content white-text">
+                <span class="card-title">{{desc.title}}, ACT {{actId}}, Scene {{sceneId}}</span>
+                <p>{{scene.$.info}}</p>
+            </div>
+        </div>
+        <table width="100%">
+            <tbody>
+            {{>scene this.scene}}
+            </tbody>
+        </table>
+    {{else}}
+        <div class="card red darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">Scene not found</span>
+                <p>The scene you are looking for doesn't exist in our database.</p>
+            </div>
+        </div>
+    {{/if}}
+</div>
+{{> scripts}}
+</body>
+</html>

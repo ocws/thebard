@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> header}}
+<body>
+{{> nav}}
+<div class="container">
+    {{#if act}}
+        <table width="100%">
+            <tbody>
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card light-blue darken-3">
+                                <div class="card-content white-text">
+                                    <span class="card-title">{{desc.title}}, ACT {{actId}}</span>
+                                    <p>{{act.$.info}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {{#each act.scene}}
+                <tr>
+                    <td>
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="card light-blue darken-2">
+                                    <div class="card-content white-text">
+                                        <span class="card-title">Scene {{arrToScene @index}}</span>
+                                        <p>{{this.$.info}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {{>scene this}}
+            {{/each}}
+            </tbody>
+        </table>
+    {{else}}
+        <div class="card red darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">Act not found</span>
+                <p>You</p>
+            </div>
+        </div>
+    {{/if}}
+</div>
+{{> scripts}}
+</body>
+</html>

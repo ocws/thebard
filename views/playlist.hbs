@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> header}}
+<body>
+{{> nav}}
+<nav class="top-nav">
+    <div class="container">
+        <div class="nav-wrapper"><a class="page-title" style="font-size: 25px;">{{title}}</a></div>
+    </div>
+</nav>
+<!--<div class="parallax-container" style="height: 400px;">
+    <div class="parallax"><img src="{{cover}}"><h2>Hello</h2></div>
+</div>-->
+<div class="container" style="padding-top: 50px;">
+    <div class="row">
+        {{#if texts}}
+        {{#each texts}}
+            <div class="col s12 m6">
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="{{this.image}}">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">{{this.title}}<i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="/{{this.shortName}}">Read now</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">{{this.title}} <i class="mdi-navigation-close right"></i></span>
+                        <p>{{this.desc}}</p>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        {{else}}
+            <h2>There are no plays here.</h2>
+        {{/if}}
+    </div>
+</div>
+{{> scripts}}
+
+</body>
+</html>
