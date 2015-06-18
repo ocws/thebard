@@ -1,35 +1,35 @@
 {{#each text}}
 <tr>
     <td>
-        <div class="row" style="font-size: 14pt;">
+        <div class="row text-chunk" style="font-size: 14pt;">
             {{#ifCond $.type '==' 'stage'}}
             <div class="col l2 m3"></div>
-            <div class="col l6 m9"><i>{{this._}}</i></div>
+            <div class="col l6 m9 stage-direction"><i>{{this._}}</i></div>
             {{/ifCond}}
             {{#ifCond $.type '==' 'enter'}}
             <div class="col l2 m3"></div>
-            <div class="col l6 m9 green-text"><i>ENTER {{this._}}</i></div>
+            <div class="col l6 m9 green-text enter-direction"><i>ENTER {{this._}}</i></div>
             {{/ifCond}}
             {{#ifCond $.type '==' 'verse'}}
-            <div class="orange-text col l2 m3">{{$.char}}</div>
-            <div class="col l6 m9">{{htmlLines this._ }}</div>
+            <div class="orange-text col l2 m3 char-name">{{$.char}}</div>
+            <div class="col l6 m9 verse-line">{{htmlLines this._ }}</div>
             {{/ifCond}}
             {{#ifCond $.type '==' 'prose'}}
-            <div class="orange-text col l2 m3">{{$.char}}</div>
-            <div class="col l6 m9">{{htmlLines this._ }}</div>
+            <div class="orange-text col l2 m3 char-name">{{$.char}}</div>
+            <div class="col l6 m9 prose-line">{{htmlLines this._ }}</div>
             {{/ifCond}}
             {{#ifCond $.type '==' 'exit'}}
             <div class="col l2 m3"></div>
-            <div class="red-text col l6 m9"><i>EXIT {{this._}}</i></div>
+            <div class="red-text col l6 m9 exit-direction"><i>EXIT {{this._}}</i></div>
             {{/ifCond}}
             {{#ifCond $.type '==' 'exeunt'}}
             <div class="col l2 m3"></div>
-            <div class="red-text col l6 m9"><i>EXEUNT {{this._}}</i></div>
+            <div class="red-text col l6 m9 exeunt-direction"><i>EXEUNT {{this._}}</i></div>
             {{/ifCond}}
             <div class="col l4 m12">
-                <ul>
+                <ul class="note-list">
                     {{#each this.note}}
-                    <li>{{this.$.start}}{{#if this.$.end}}-{{this}}{{/if}}. {{this.$.word}} <span class="blue-text">{{this._}}</span></li>
+                    <li class="note-item">{{this.$.start}}{{#if this.$.end}}-{{this}}{{/if}}. {{this.$.word}} <span class="blue-text">{{this._}}</span></li>
                     {{/each}}
                 </ul>
             </div>

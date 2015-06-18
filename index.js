@@ -122,7 +122,7 @@ hbs.registerHelper('ifCond', function (v1, operator, v2, options) {
 });
 hbs.registerHelper('htmlLines', function(str) {
     str = hbs.Utils.escapeExpression(str);
-    str = str.replace(new RegExp("\n", 'g'), "<br>");
+    str = str.replace(new RegExp("(.+)", 'g'), '<span>$1</span><br>');
     return new hbs.SafeString(str);
 });
 hbs.registerHelper('arrToScene', function(str) {
