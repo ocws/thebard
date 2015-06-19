@@ -20,7 +20,7 @@ dir.files(__dirname + "/scripts", function(err, files) {
     if (err) throw err;
     console.log(files);
     files.forEach(function(path) {
-        if(path.indexOf('.git') == -1) {
+        if(path.indexOf('.xml') !== -1 && path.indexOf('.git') == -1) {
             fs.readFile(path, function (err, data) {
                 parseString(data, function (err, result) {
                     var play = new Play(result);
