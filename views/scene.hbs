@@ -2,7 +2,7 @@
 <html lang="en">
 {{> header}}
 <body>
-{{> nav}}
+{{#if showNav}}{{> nav}}{{/if}}
 <div class="container">
     {{#if scene}}
         <div class="card light-blue darken-2">

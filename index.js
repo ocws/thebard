@@ -72,7 +72,7 @@ app.get('/:play', function(req, res){
 app.get('/:play/full', function(req, res){
     var play = getPlayByShortName(req.params.play);
     if(play != null) {
-        res.render('full', {play: play.getTextObject(), desc: play.getDescriptor()});
+        res.render('full', {play: play.getTextObject(), desc: play.getDescriptor(), showNav: req.query.clean == null});
     }
     else{
         res.end("Play not found.");
@@ -81,7 +81,7 @@ app.get('/:play/full', function(req, res){
 app.get('/:play/:act', function(req, res){
     var play = getPlayByShortName(req.params.play);
     if(play != null) {
-        res.render('act', {act: play.getActObject(req.params.act), desc: play.getDescriptor(), actId: ensureRoman(req.params.act)});
+        res.render('act', {act: play.getActObject(req.params.act), desc: play.getDescriptor(), actId: ensureRoman(req.params.act), showNav: req.query.clean == null});
     }
     else{
         res.end("Play not found.");
@@ -90,7 +90,7 @@ app.get('/:play/:act', function(req, res){
 app.get('/:play/:act/:scene', function(req, res){
     var play = getPlayByShortName(req.params.play);
     if(play != null) {
-        res.render('scene', {scene: play.getSceneObject(req.params.act, req.params.scene), desc: play.getDescriptor(), actId: ensureRoman(req.params.act), sceneId: ensureArabic(req.params.scene)});
+        res.render('scene', {scene: play.getSceneObject(req.params.act, req.params.scene), desc: play.getDescriptor(), actId: ensureRoman(req.params.act), sceneId: ensureArabic(req.params.scene), showNav: req.query.clean == null});
     }
     else{
         res.end("Play not found.");
