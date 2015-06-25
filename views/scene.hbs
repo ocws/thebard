@@ -7,7 +7,8 @@
     {{#if scene}}
         <div class="card light-blue darken-2">
             <div class="card-content white-text">
-                <span class="card-title">{{desc.title}}, ACT {{actId}}, Scene {{sceneId}}</span>
+                {{!-- TODO display "ACT" and "Scene" --}}
+                <span class="card-title">{{desc.title}}, {{actId}}, {{sceneId}}</span>
                 <p>{{scene.$.info}}</p>
             </div>
         </div>

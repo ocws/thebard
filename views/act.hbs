@@ -13,7 +13,7 @@
                         <div class="col s12">
                             <div class="card light-blue darken-3">
                                 <div class="card-content white-text">
-                                    <span class="card-title">{{desc.title}}, ACT {{actId}}</span>
+                                    <span class="card-title">{{desc.title}}, {{#if act.$.standard}}ACT{{/if}} {{actId}}</span>
                                     <p>{{act.$.info}}</p>
                                 </div>
                             </div>
@@ -28,7 +28,7 @@
                             <div class="col s12">
                                 <div class="card light-blue darken-2">
                                     <div class="card-content white-text">
-                                        <span class="card-title">Scene {{arrToScene @index}}</span>
+                                        <span class="card-title">{{#if this.$.standard}}Scene{{/if}} {{this.$.name}}</span>
                                         <p>{{this.$.info}}</p>
                                     </div>
                                 </div>

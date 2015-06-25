@@ -175,14 +175,23 @@ var Play = function(data){
     this.image = data.head[0].image[0];
     this.text = data.text[0];
     var currentAct = 1;
-    console.log(util.inspect(this.getTableOfContents(), false, null));
     for(var i = 0; i < this.text.act.length; i++){
         if(this.text.act[i].$.name == null){
             this.text.act[i].$.name = ensureRoman(currentAct);
             this.text.act[i].$.standard = true;
             currentAct++;
         }
+        var currentScene = 1;
+        for(var j = 0; j < this.text.act[i].scene.length; j++){
+            if(this.text.act[i].scene[j].$.name == null){
+                this.text.act[i].scene[j].$.name = currentScene;
+                this.text.act[i].scene[j].$.standard = true;
+                currentScene++;
+            }
+        }
+
     }
+    console.log(util.inspect(this.getTableOfContents(), false, null));
 };
 Play.prototype.hasTag = function (tag) {
     return this.tags.indexOf(tag) > -1;
@@ -206,8 +215,12 @@ Play.prototype.getActObject = function(id){
 };
 Play.prototype.getSceneObject = function(actId, sceneId){
     var act = this.getActObject(actId);
-    sceneId = ensureArabic(sceneId)-1;
-    return act != null ? (act.scene[sceneId] != null ? act.scene[sceneId] : null) : null;
+    for(var i = 0; i < act.scene.length; i++){
+        if(act.scene[i].$.name == sceneId){
+            return act.scene[i];
+        }
+    }
+    return null;
 };
 Play.prototype.getDescriptor = function(){
     return {tags: this.tags, desc: this.desc, title: this.title, image: this.image, shortName: this.shortName};
@@ -224,10 +237,14 @@ Play.prototype.getTableOfContents = function(){
             out[i].arabic = currentAct;
             currentAct++;
         }
+        var currentScene = 1;
         for(var j = 0; j < this.text.act[i].scene.length; j++){
-            out[i].scene.push(this.text.act[i].scene[j].$);
-            out[i].scene[j].roman = toRoman(j+1);
-            out[i].scene[j].arabic = j+1;
+            out[i].scene.push(this.text.act[i].scene[j].$ || {});
+            if(this.text.act[i].scene[j].$.standard == true) {
+                out[i].scene[j].roman = toRoman(currentScene);
+                out[i].scene[j].arabic = currentScene;
+                currentScene++;
+            }
         }
     }
     return out;
