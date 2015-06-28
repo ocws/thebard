@@ -7,3 +7,11 @@
 .container{
     width: 90% !important;
 }
+@media(min-width: 992px) {
+    .playlist-image{
+        max-height: 450px;
+    }
+    .playlist-card{
+        height: 590px;
+    }
+}
