@@ -54,6 +54,11 @@ app.get('/faq', function(req, res){
 app.get('/team', function(req, res){
     res.render('team', {});
 });
+app.get('/all', function(req, res){
+    var  descriptors = [];
+    for(var i = 0; i < plays.length; i++) descriptors[i] = plays[i].getDescriptor();
+    res.render('playlist', {title: "All plays", texts: descriptors});
+});
 app.get('/tag/:tagId', function(req, res){
     var playsWithTag = getPlaysWithTag(req.params.tagId);
 
