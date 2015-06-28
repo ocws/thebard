@@ -23,8 +23,13 @@ dir.files(__dirname + "/scripts", function(err, files) {
         if(path.indexOf('.xml') !== -1 && path.indexOf('.git') == -1) {
             fs.readFile(path, function (err, data) {
                 parseString(data, function (err, result) {
-                    var play = new Play(result);
-                    plays.push(play);
+                    try {
+                        var play = new Play(result);
+                        plays.push(play);
+                    }
+                    catch(e){
+                        console.log(path + " is not a play.");
+                    }
 
                 });
             });
