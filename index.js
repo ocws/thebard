@@ -28,7 +28,7 @@ dir.files(__dirname + "/scripts", function(err, files) {
                         plays.push(play);
                     }
                     catch(e){
-                        console.log(path + " is not a play.");
+                        console.log(e);
                     }
 
                 });
